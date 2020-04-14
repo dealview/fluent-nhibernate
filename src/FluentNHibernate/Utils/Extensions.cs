@@ -71,9 +71,9 @@ namespace FluentNHibernate.Utils
             using (var stream = new MemoryStream())
             {
 
-#if NETFX
+//#if NETFX
                 var formatter = new BinaryFormatter();
-#endif
+//#endif
 
 #if NETCORE
                 var formatter = new BinaryFormatter(new NetStandardSerialization.SurrogateSelector(), new StreamingContext());
