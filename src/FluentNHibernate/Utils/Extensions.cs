@@ -70,13 +70,17 @@ namespace FluentNHibernate.Utils
         {
             using (var stream = new MemoryStream())
             {
-
-//#if NETFX
                 var formatter = new BinaryFormatter();
-//#endif
+
+                // these cases are needed and shouldn't be commented out
+                // @ref: https://github.com/FluentNHibernate/fluent-nhibernate/issues/390
+                // There was some weird error though, so I made the NETFX route the default.
+// #if NETFX
+//                 formatter = new BinaryFormatter();
+// #endif
 
 #if NETCORE
-                var formatter = new BinaryFormatter(new NetStandardSerialization.SurrogateSelector(), new StreamingContext());
+                formatter = new BinaryFormatter(new NetStandardSerialization.SurrogateSelector(), new StreamingContext());
 #endif
 
                 formatter.Serialize(stream, obj);

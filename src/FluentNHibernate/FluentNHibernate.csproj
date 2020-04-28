@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.0;net471</TargetFrameworks>
     <NoWarn>1591</NoWarn>
     <PlatformTarget>AnyCpu</PlatformTarget>
     <OutputType>Library</OutputType>
@@ -13,15 +13,14 @@
     <Description>FluentNHibernate</Description>
   </PropertyGroup>
 
-
   <PropertyGroup>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\Shared.msbuild" />
+  <Import Project="..\Shared.msbuild" />
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <Reference Include="System.configuration" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net471'">
+    <Reference Include="System.Configuration" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
   </ItemGroup>
@@ -36,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\nhibernate\src\NHibernate\NHibernate.csproj" />
+    <ProjectReference Include="..\..\..\nhibernate-core\src\NHibernate\NHibernate.csproj" />
   </ItemGroup>
 
   <ItemGroup>
